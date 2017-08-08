@@ -15,6 +15,10 @@ import { MasterSignupComponent } from './master-signup/master-signup.component';
 import {AuthRoutesModule } from './auth/auth-routes.module';
 import { AuthService} from './auth/auth.service';
 import { MainComponent } from './main/main.component';
+import { MasterSignupFormComponent } from './master-signup/master-signup-form/master-signup-form.component';
+import { SignupFormComponent } from './signup/signup-form/signup-form.component';
+import { ApprenticeLoginComponent } from './apprentice-login/apprentice-login.component';
+import { ApprenticeProfileComponent } from './apprentice-profile/apprentice-profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { MainComponent } from './main/main.component';
     TestimonialsComponent,
     SignupComponent,
     MasterSignupComponent,
-    MainComponent
+    MainComponent,
+    MasterSignupFormComponent,
+    SignupFormComponent,
+    ApprenticeLoginComponent,
+    ApprenticeProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -4,24 +4,7 @@
     <p>Introducing SkillSite, bridging the gap between master and apprentice</p>
   </div>
   <div class="flex half">
-    <h3>Signup Up for the Beta</h3>
-    <form id="signup" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-      <input type="text" value="" placeholder="Username"
-      id="username" formControlName="username">
-      <input type="text" value="" placeholder="First Name"
-      id="firstname" formControlName="firstname">
-      <input type="text" value="" placeholder="Last Name"
-      id="lastname" formControlName="lastname">
-      <input type="email" value="" placeholder="Email"
-      id="email" formControlName="email">
-      <input type="password" value="" placeholder="Password"
-      id="password" formControlName="password">
-      <span class="flex">
-        <button type="submit"
-        class="btn btn-success">Submit</button>
-      </span>
-    </form>
-
+    <app-signup-form></app-signup-form>
   </div>
 
 

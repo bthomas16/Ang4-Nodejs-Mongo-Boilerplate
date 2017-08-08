@@ -1,0 +1,13 @@
+.top {
+  align-self: flex-start;
+}
+
+.mid {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  text-align: center;
+  display: block;
+  left: 47%;
+
+}

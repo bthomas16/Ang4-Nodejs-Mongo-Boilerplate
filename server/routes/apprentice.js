@@ -28,4 +28,35 @@ router.post('/signup', function(req, res, next) {
       });
     });
 
+router.post('/signin', (req, res, next) => {
+  Apprentice.findOne({username: req.body.username},
+  function(err, apprentice) {
+    if(err) {
+      res.status(500).json({
+        title: 'An Error Occured',
+        error: err
+      });
+    }
+    if(!apprentice) {
+      return res.status(401).json({
+        title: 'Login Failed',
+        error: {message: 'Invalid Login Credentials'}
+      });
+    }
+    if(!bcrypt.compareSync(req.body.password, apprentice.password)) {
+      return res.status(401).json({
+        title: 'Login Failed',
+        error: {message: 'Invalid Login Credentials'}
+        })
+      }
+      var token = jwt.sign({apprentice: apprentice}, 'nobadideas', {expiresIn: 21600});
+      res.status(200).json({
+        message: 'Successfully Logged In',
+        token: token,
+        apprenticeId: apprentice._id
+      });
+    });
+  });
+
+
 module.exports = router;
