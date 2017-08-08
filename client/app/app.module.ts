@@ -9,16 +9,18 @@ import { LandingHeroComponent } from './landing-hero/landing-hero.component';
 import { FutureSkillsComponent } from './future-skills/future-skills.component';
 import { TeachersPreviewComponent } from './teachers-preview/teachers-preview.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
-import { SignupComponent } from './signup/signup.component';
+import { ApprenticeSignupComponent } from './apprentice-signup/apprentice-signup.component';
 import { MasterSignupComponent } from './master-signup/master-signup.component';
 
 import {AuthRoutesModule } from './auth/auth-routes.module';
 import { AuthService} from './auth/auth.service';
 import { MainComponent } from './main/main.component';
 import { MasterSignupFormComponent } from './master-signup/master-signup-form/master-signup-form.component';
-import { SignupFormComponent } from './signup/signup-form/signup-form.component';
+import { SignupFormComponent } from './apprentice-signup/signup-form/signup-form.component';
 import { ApprenticeLoginComponent } from './apprentice-login/apprentice-login.component';
 import { ApprenticeProfileComponent } from './apprentice-profile/apprentice-profile.component';
+
+import { MasterService } from './master.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { ApprenticeProfileComponent } from './apprentice-profile/apprentice-prof
     FutureSkillsComponent,
     TeachersPreviewComponent,
     TestimonialsComponent,
-    SignupComponent,
+    ApprenticeSignupComponent,
     MasterSignupComponent,
     MainComponent,
     MasterSignupFormComponent,
@@ -43,7 +45,7 @@ import { ApprenticeProfileComponent } from './apprentice-profile/apprentice-prof
     AuthRoutesModule,
     HttpModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, MasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

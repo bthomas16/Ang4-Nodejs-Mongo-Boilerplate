@@ -9,8 +9,9 @@ import { Master } from "../models/master.model";
 @Injectable()
 export class AuthService {
     constructor(private http: Http) {}
+    masters: Master[]
 
-    signup(apprentice: Apprentice) {
+    apprenticeSignup(apprentice: Apprentice) {
         const body = JSON.stringify(apprentice);
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/apprentice/signup', body, {headers: headers})

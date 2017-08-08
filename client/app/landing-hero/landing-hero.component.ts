@@ -24,7 +24,7 @@ export class LandingHeroComponent implements OnInit {
       this.myForm.value.email,
       this.myForm.value.password
     );
-    this.authService.signup(apprentice)
+    this.authService.apprenticeSignup(apprentice)
     .subscribe(
       data => console.log(data),
       error => console.log(error)
