@@ -28,7 +28,7 @@ router.post('/signup', function(req, res, next) {
       });
     });
 
-router.post('/signin', (req, res, next) => {
+router.post('/login', (req, res, next) => {
   Apprentice.findOne({username: req.body.username},
   function(err, apprentice) {
     if(err) {

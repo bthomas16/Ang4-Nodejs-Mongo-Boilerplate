@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { AuthService } from '../../auth/auth.service';
 import { Apprentice } from '../../models/apprentice.model';
-import { Master } from '../../models/master.model';
+
 
 @Component({
   selector: 'app-signup-form',
@@ -12,28 +12,28 @@ import { Master } from '../../models/master.model';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit {
-  myForm: FormGroup
+  apprenticeSignupForm: FormGroup;
 
   constructor(private authService: AuthService) {}
 
-  onSubmit() {
+  onApprenticeSignup() {
     const apprentice = new Apprentice (
-      this.myForm.value.username,
-      this.myForm.value.firstname,
-      this.myForm.value.lastname,
-      this.myForm.value.email,
-      this.myForm.value.password
+      this.apprenticeSignupForm.value.username,
+      this.apprenticeSignupForm.value.firstname,
+      this.apprenticeSignupForm.value.lastname,
+      this.apprenticeSignupForm.value.email,
+      this.apprenticeSignupForm.value.password
     );
     this.authService.apprenticeSignup(apprentice)
     .subscribe(
       data => console.log(data),
       error => console.log(error)
     );
-    this.myForm.reset();
+    this.apprenticeSignupForm.reset();
   }
 
   ngOnInit() {
-    this.myForm = new FormGroup({
+    this.apprenticeSignupForm = new FormGroup({
             username: new FormControl(null, Validators.required),
             firstname: new FormControl(null, Validators.required),
             lastname: new FormControl(null, Validators.required),
@@ -43,6 +43,6 @@ export class SignupFormComponent implements OnInit {
             ]),
             password: new FormControl(null, Validators.required)
         });
-  }
+      }
 
 }

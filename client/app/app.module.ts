@@ -21,6 +21,8 @@ import { ApprenticeLoginComponent } from './apprentice-login/apprentice-login.co
 import { ApprenticeProfileComponent } from './apprentice-profile/apprentice-profile.component';
 
 import { MasterService } from './master.service';
+import { MasterLoginComponent } from './master-login/master-login.component';
+import { MasterProfileComponent } from './master-profile/master-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MasterService } from './master.service';
     MasterSignupFormComponent,
     SignupFormComponent,
     ApprenticeLoginComponent,
-    ApprenticeProfileComponent
+    ApprenticeProfileComponent,
+    MasterLoginComponent,
+    MasterProfileComponent
   ],
   imports: [
     BrowserModule,

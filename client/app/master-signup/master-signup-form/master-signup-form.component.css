@@ -1,0 +1,30 @@
+.master-form {
+  width: 55%;
+}
+
+.master-form input{
+  width: 50%;
+  margin: 2%;
+  text-align: center;
+}
+
+.master-form label {
+  text-align: center;
+  width: 100%;
+}
+
+#yearsExp {
+  width: 10%;
+}
+
+
+#years {
+  margin-left: 0.5%;
+}
+
+.master-form input.skill {
+  text-align: left;
+  width: 90%;
+  margin:2%;
+
+}

@@ -9,7 +9,6 @@ import { Master } from "../models/master.model";
 @Injectable()
 export class AuthService {
     constructor(private http: Http) {}
-    masters: Master[]
 
     apprenticeSignup(apprentice: Apprentice) {
         const body = JSON.stringify(apprentice);
@@ -19,29 +18,30 @@ export class AuthService {
             .catch((error: Response) => Observable.throw(error.json()));
     }
 
+    masterSignup(master: Master) {
+      const body = JSON.stringify(master);
+      const headers = new Headers({'Content-Type': 'application/json'});
+      return this.http.post('http://localhost:3000/master/signup', body, {headers: headers})
+        .map((response: Response) => response.json())
+        .catch((error: Response) =>
+        Observable.throw(error.json()));
+    }
+
     apprenticeLogin(apprentice: Apprentice){
       const body = JSON.stringify(apprentice);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post('http://localhost:3000/apprentice/signin', body, {headers: headers})
+      return this.http.post('http://localhost:3000/apprentice/login', body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
     }
 
+    masterLogin(master: Master) {
+      const body = JSON.stringify(master);
+      const headers = new Headers({'Content-Type': 'application/json'});
+      return this.http.post('http://localhost:3000/master/login', body, {headers: headers})
+        .map((response: Response) =>
+        response.json())
+        .catch((error: Response) => Observable.throw(error.json()));
+      }
 
-
-    // signin(apprentice: Apprentice) {
-    //     const body = JSON.stringify(apprentice);
-    //     const headers = new Headers({'Content-Type': 'application/json'});
-    //     return this.http.post('http://localhost:3000/apprentice/signin', body, {headers: headers})
-    //         .map((response: Response) => response.json())
-    //         .catch((error: Response) => Observable.throw(error.json()));
-    // }
-    //
-    // logout() {
-    //     localStorage.clear();
-    // }
-    //
-    // isLoggedIn() {
-    //     return localStorage.getItem('token') !== null;
-    // }
-}
+    }
