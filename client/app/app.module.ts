@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -23,6 +24,8 @@ import { ApprenticeProfileComponent } from './apprentice-profile/apprentice-prof
 import { MasterService } from './master.service';
 import { MasterLoginComponent } from './master-login/master-login.component';
 import { MasterProfileComponent } from './master-profile/master-profile.component';
+import { OptionsComponent } from './options/options.component';
+import { TeacherComponent } from './teacher/teacher.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { MasterProfileComponent } from './master-profile/master-profile.componen
     ApprenticeLoginComponent,
     ApprenticeProfileComponent,
     MasterLoginComponent,
-    MasterProfileComponent
+    MasterProfileComponent,
+    OptionsComponent,
+    TeacherComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { MasterProfileComponent } from './master-profile/master-profile.componen
     ReactiveFormsModule,
     AuthRoutesModule,
     HttpModule,
+    AngularFontAwesomeModule
   ],
   providers: [AuthService, MasterService],
   bootstrap: [AppComponent]
