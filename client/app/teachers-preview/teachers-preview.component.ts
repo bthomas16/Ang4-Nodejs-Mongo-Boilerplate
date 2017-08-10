@@ -20,7 +20,6 @@ export class TeachersPreviewComponent implements OnInit {
     .subscribe(
       (masters: Master[]) => {
         this.masters = masters;
-        console.log(masters);
       }
     )
   }

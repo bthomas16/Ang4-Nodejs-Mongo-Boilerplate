@@ -23,7 +23,6 @@ router.get('/retrieve-all', (req, res, next) => {
 
 
 router.post('/signup', function(req, res, next) {
-  console.log("howdy", req.body);
   var master = new Master ({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
@@ -34,7 +33,7 @@ router.post('/signup', function(req, res, next) {
       skill2: req.body.skill2,
       skill3: req.body.skill3
   });
-  console.log(master);
+  console.log('server side signup route', master);
   master.save((err, result) => {
     console.log(err, result);
     if(err) {
