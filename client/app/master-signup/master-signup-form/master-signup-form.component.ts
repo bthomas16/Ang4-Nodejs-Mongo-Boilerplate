@@ -30,7 +30,7 @@ export class MasterSignupFormComponent implements OnInit {
       data => console.log(data),
       error => console.log(error)
     );
-    this.masterSignupForm.reset()
+    this.masterSignupForm.reset();
   }
 
   ngOnInit() {
