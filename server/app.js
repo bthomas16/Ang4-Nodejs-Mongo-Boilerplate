@@ -6,11 +6,11 @@ var mongoose = require('mongoose');
 var api = require('./routes/api');
 var apprentice = require('./routes/apprentice');
 var master = require('./routes/master');
-var user = 'zachFrantz';
-var password = 'skillsite';
+// var user = 'zachFrantz';
+// var password = 'skillsite';
 
 
-mongoose.connect("mongodb://' + user + '':'' + password + ''@ds015750.mlab.com:15750/learnt", { useMongoClient: true })
+mongoose.connect("mongodb://zachFrantz:skillsite@ds015750.mlab.com:15750/learnt", { useMongoClient: true })
 
 // const db = 'localhost:27017/skills-app-db';
 // mongoose.Promise = global.Promise;
