@@ -6,7 +6,7 @@
   },
   "apps": [
     {
-      "root": "app",
+      "root": "ngApp",
       "outDir": "dist",
       "assets": [
         "assets",
