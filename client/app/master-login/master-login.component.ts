@@ -27,7 +27,7 @@ export class MasterLoginComponent implements OnInit {
         },
         error => console.log(error)
       );
-      this.masterLoginForm.reset();
+      // this.masterLoginForm.reset();
   }
 
   ngOnInit() {
