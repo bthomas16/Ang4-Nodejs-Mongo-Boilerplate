@@ -4,7 +4,6 @@ import 'rxjs/Rx';
 import { Observable } from "rxjs";
 
 import { Master } from "./models/master.model";
-const server = 'https://learnt.herokuapp.com/';
 
 @Injectable()
   export class MasterService {
@@ -14,7 +13,7 @@ const server = 'https://learnt.herokuapp.com/';
 
 
     getMasters() {
-      return this.http.get(server + 'master/retrieve-all')
+      return this.http.get('http://localhost:3000/master/retrieve-all')
       .map((response: Response) => {
         const masters = response.json().obj;
         let transformedMasters: Master[] = [];
