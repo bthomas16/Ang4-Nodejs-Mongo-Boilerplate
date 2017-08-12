@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}

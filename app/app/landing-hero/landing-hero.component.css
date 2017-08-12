@@ -1,0 +1,35 @@
+.wrapper {
+  height: 36em;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ), url('../../assets/golf.jpg');
+  background-size: cover;
+  margin: auto;
+  width: 100vw;
+}
+
+.half {
+  width: 48%;
+}
+
+.text {
+  text-align: center;
+  color: white;
+  justify-content: center;
+}
+
+.title {
+  font-size: 4em;
+  font-weight: 800;
+  margin: 0;
+  text-align: left;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.info {
+  font-weight: 300;
+  margin-top: 2%;
+  font-size: 1.4em;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

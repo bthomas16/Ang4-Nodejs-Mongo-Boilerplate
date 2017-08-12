@@ -1,0 +1,33 @@
+/*.wrapper {
+  width: 75%;
+}*/
+
+.quote {
+  font-size: 2.2em;
+  margin: auto;
+  width: 75%;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.author {
+  font-weight: 900;
+  font-size: 1.4em;
+  width: 75%;
+  text-align: left;
+  margin: auto;
+  margin-top: 3.5%;
+}
+
+.author-location {
+  font-weight: 300;
+  width: 75%;
+  text-align: left;
+  margin: auto;
+}
+
+.i {
+  margin-bottom: 1.5%;
+  justify-content: flex-start;
+  width: 75%;
+}
