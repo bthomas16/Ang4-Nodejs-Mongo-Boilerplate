@@ -29,7 +29,7 @@ export class SignupFormComponent implements OnInit {
       data => console.log(data),
       error => console.log(error)
     );
-    // this.apprenticeSignupForm.reset();
+    this.apprenticeSignupForm.reset();
   }
 
   ngOnInit() {

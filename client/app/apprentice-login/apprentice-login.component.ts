@@ -26,7 +26,7 @@ export class ApprenticeLoginComponent implements OnInit {
       },
       error => console.error(error)
     );
-    // this.apprenticeLoginForm.reset();
+    this.apprenticeLoginForm.reset();
   }
 
 
