@@ -13,7 +13,7 @@ import { Master } from "./models/master.model";
 
 
     getMasters() {
-      return this.http.get('http://localhost:3000/master/retrieve-all')
+      return this.http.get('https://learnt.herokuapp.com/master/retrieve-all')
       .map((response: Response) => {
         const masters = response.json().obj;
         let transformedMasters: Master[] = [];

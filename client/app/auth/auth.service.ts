@@ -13,7 +13,7 @@ export class AuthService {
     apprenticeSignup(apprentice: Apprentice) {
         const body = JSON.stringify(apprentice);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/apprentice/signup', body, {headers: headers})
+        return this.http.post('https://learnt.herokuapp.com/apprentice/signup', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -21,7 +21,7 @@ export class AuthService {
     masterSignup(master: Master) {
       const body = JSON.stringify(master);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post('http://localhost:3000/master/signup', body, {headers: headers})
+      return this.http.post('https://learnt.herokuapp.com/master/signup', body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) =>
         Observable.throw(error.json()));
@@ -30,7 +30,7 @@ export class AuthService {
     apprenticeLogin(apprentice: Apprentice){
       const body = JSON.stringify(apprentice);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post('http://localhost:3000/apprentice/login', body, {headers: headers})
+      return this.http.post('https://learnt.herokuapp.com/apprentice/login', body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -38,7 +38,7 @@ export class AuthService {
     masterLogin(master: Master) {
       const body = JSON.stringify(master);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post('http://localhost:3000/master/login', body, {headers: headers})
+      return this.http.post('https://learnt.herokuapp.com/master/login', body, {headers: headers})
         .map((response: Response) =>
         response.json())
         .catch((error: Response) => Observable.throw(error.json()));
