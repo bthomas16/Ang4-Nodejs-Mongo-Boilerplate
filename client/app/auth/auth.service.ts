@@ -5,7 +5,6 @@ import { Observable } from "rxjs";
 
 import { Apprentice } from "../models/apprentice.model";
 import { Master } from "../models/master.model";
-const server = 'https://learnt.herokuapp.com/';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +13,7 @@ export class AuthService {
     apprenticeSignup(apprentice: Apprentice) {
         const body = JSON.stringify(apprentice);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(server + 'apprentice/signup', body, {headers: headers})
+        return this.http.post('https://learnt.herokuapp.com/apprentice/signup', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -22,7 +21,7 @@ export class AuthService {
     masterSignup(master: Master) {
       const body = JSON.stringify(master);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post(server + 'master/signup', body, {headers: headers})
+      return this.http.post('https://learnt.herokuapp.com/master/signup', body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) =>
         Observable.throw(error.json()));
@@ -31,7 +30,7 @@ export class AuthService {
     apprenticeLogin(apprentice: Apprentice){
       const body = JSON.stringify(apprentice);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post(server + 'apprentice/login', body, {headers: headers})
+      return this.http.post('https://learnt.herokuapp.com/apprentice/login', body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -39,7 +38,7 @@ export class AuthService {
     masterLogin(master: Master) {
       const body = JSON.stringify(master);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post(server + 'master/login', body, {headers: headers})
+      return this.http.post('https://learnt.herokuapp.com/master/login', body, {headers: headers})
         .map((response: Response) =>
         response.json())
         .catch((error: Response) => Observable.throw(error.json()));
