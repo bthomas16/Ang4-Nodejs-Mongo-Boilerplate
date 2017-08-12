@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "node ./bin/www",
+    "ng": "ng",
+    "start": "ng serve && node ./bin/www",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
