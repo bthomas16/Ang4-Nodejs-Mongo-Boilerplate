@@ -39,10 +39,10 @@
   },
   "lint": [
     {
-      "project": "/app/tsconfig.app.json"
+      "project": "./app/app/tsconfig.app.json"
     },
     {
-      "project": "/app/tsconfig.spec.json"
+      "project": "./app/app/tsconfig.spec.json"
     },
     {
       "project": "e2e/tsconfig.e2e.json"
