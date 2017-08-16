@@ -22,6 +22,8 @@ import { ApprenticeLoginComponent } from './apprentice-login/apprentice-login.co
 import { ApprenticeProfileComponent } from './apprentice-profile/apprentice-profile.component';
 
 import { MasterService } from './master.service';
+import { ApprenticeService } from './apprentice.service';
+
 import { MasterLoginComponent } from './master-login/master-login.component';
 import { MasterProfileComponent } from './master-profile/master-profile.component';
 import { OptionsComponent } from './options/options.component';
@@ -55,7 +57,7 @@ import { TeacherComponent } from './teacher/teacher.component';
     HttpModule,
     AngularFontAwesomeModule
   ],
-  providers: [AuthService, MasterService],
+  providers: [AuthService, MasterService, ApprenticeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

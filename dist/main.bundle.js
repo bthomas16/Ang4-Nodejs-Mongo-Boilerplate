@@ -95,16 +95,18 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__apprentice_login_apprentice_login_component__ = __webpack_require__("../../../../../app/app/apprentice-login/apprentice-login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__apprentice_profile_apprentice_profile_component__ = __webpack_require__("../../../../../app/app/apprentice-profile/apprentice-profile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__master_service__ = __webpack_require__("../../../../../app/app/master.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__master_login_master_login_component__ = __webpack_require__("../../../../../app/app/master-login/master-login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__master_profile_master_profile_component__ = __webpack_require__("../../../../../app/app/master-profile/master-profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__options_options_component__ = __webpack_require__("../../../../../app/app/options/options.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__teacher_teacher_component__ = __webpack_require__("../../../../../app/app/teacher/teacher.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__apprentice_service__ = __webpack_require__("../../../../../app/app/apprentice.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__master_login_master_login_component__ = __webpack_require__("../../../../../app/app/master-login/master-login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__master_profile_master_profile_component__ = __webpack_require__("../../../../../app/app/master-profile/master-profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__options_options_component__ = __webpack_require__("../../../../../app/app/options/options.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__teacher_teacher_component__ = __webpack_require__("../../../../../app/app/teacher/teacher.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -151,10 +153,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__apprentice_signup_signup_form_signup_form_component__["a" /* SignupFormComponent */],
             __WEBPACK_IMPORTED_MODULE_18__apprentice_login_apprentice_login_component__["a" /* ApprenticeLoginComponent */],
             __WEBPACK_IMPORTED_MODULE_19__apprentice_profile_apprentice_profile_component__["a" /* ApprenticeProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__master_login_master_login_component__["a" /* MasterLoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__master_profile_master_profile_component__["a" /* MasterProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__options_options_component__["a" /* OptionsComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__teacher_teacher_component__["a" /* TeacherComponent */]
+            __WEBPACK_IMPORTED_MODULE_22__master_login_master_login_component__["a" /* MasterLoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__master_profile_master_profile_component__["a" /* MasterProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__options_options_component__["a" /* OptionsComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__teacher_teacher_component__["a" /* TeacherComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -164,7 +166,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_4_angular_font_awesome_angular_font_awesome__["a" /* AngularFontAwesomeModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_14__auth_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_20__master_service__["a" /* MasterService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_14__auth_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_20__master_service__["a" /* MasterService */], __WEBPACK_IMPORTED_MODULE_21__apprentice_service__["a" /* ApprenticeService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -194,7 +196,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../app/app/apprentice-login/apprentice-login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"flex\">\n  <form [formGroup]=\"apprenticeLoginForm\" (ngSubmit)=\"onApprenticeLogin()\">\n    <input type=\"text\" placeholder=\"Username\" id=\"username\" class=\"form-control\" formControlName=\"username\">\n    <input type=\"password\" placeholder=\"Password\" id=\"password\" class=\"form-control\" formControlName=\"password\">\n    <button class=\"btn btn-success\">Login</button>\n  </form>\n</div>\n"
+module.exports = "<div class=\"flex\">\n  <form [formGroup]=\"apprenticeLoginForm\" (ngSubmit)=\"onApprenticeLogin()\">\n    <input type=\"email\" placeholder=\"Email Address\" id=\"email\" class=\"form-control\" formControlName=\"email\">\n    <input type=\"password\" placeholder=\"Password\" id=\"password\" class=\"form-control\" formControlName=\"password\">\n    <button class=\"btn btn-success\">Login</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -229,7 +231,7 @@ var ApprenticeLoginComponent = (function () {
     }
     ApprenticeLoginComponent.prototype.onApprenticeLogin = function () {
         var _this = this;
-        var apprentice = new __WEBPACK_IMPORTED_MODULE_3__models_apprentice_model__["a" /* Apprentice */](this.apprenticeLoginForm.value.username, this.apprenticeLoginForm.value.password);
+        var apprentice = new __WEBPACK_IMPORTED_MODULE_3__models_apprentice_model__["a" /* Apprentice */](this.apprenticeLoginForm.value.email, this.apprenticeLoginForm.value.password);
         this.authService.apprenticeLogin(apprentice)
             .subscribe(function (data) {
             localStorage.setItem('token', data.token);
@@ -240,7 +242,7 @@ var ApprenticeLoginComponent = (function () {
     };
     ApprenticeLoginComponent.prototype.ngOnInit = function () {
         this.apprenticeLoginForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            username: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
             password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required)
         });
     };
@@ -281,7 +283,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../app/app/apprentice-profile/apprentice-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  apprentice-profile works!\n</p>\n"
+module.exports = "<p>\n  {{apprentice.fullname}}\n  {{apprentice.email}}\n</p>\n"
 
 /***/ }),
 
@@ -291,6 +293,7 @@ module.exports = "<p>\n  apprentice-profile works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApprenticeProfileComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__apprentice_service__ = __webpack_require__("../../../../../app/app/apprentice.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -301,10 +304,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ApprenticeProfileComponent = (function () {
-    function ApprenticeProfileComponent() {
+    function ApprenticeProfileComponent(apprenticeService) {
+        this.apprenticeService = apprenticeService;
     }
     ApprenticeProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // this.apprenticeService.getApprentice()
+        //   .subscribe((apprentices: Apprentice[]) => {
+        //     this.apprentices = apprentices;
+        //   })
+        this.apprenticeService.getApprentice()
+            .subscribe(function (apprentice) { return _this.apprentice = apprentice; });
     };
     return ApprenticeProfileComponent;
 }());
@@ -314,9 +326,10 @@ ApprenticeProfileComponent = __decorate([
         template: __webpack_require__("../../../../../app/app/apprentice-profile/apprentice-profile.component.html"),
         styles: [__webpack_require__("../../../../../app/app/apprentice-profile/apprentice-profile.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__apprentice_service__["a" /* ApprenticeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__apprentice_service__["a" /* ApprenticeService */]) === "function" && _a || Object])
 ], ApprenticeProfileComponent);
 
+var _a;
 //# sourceMappingURL=apprentice-profile.component.js.map
 
 /***/ }),
@@ -403,7 +416,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../app/app/apprentice-signup/signup-form/signup-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Signup Up for the Beta</h3>\n<form id=\"signup\" [formGroup]=\"apprenticeSignupForm\" (ngSubmit)=\"onApprenticeSignup()\">\n  <input type=\"text\" value=\"\" placeholder=\"Username\"\n  id=\"username\" formControlName=\"username\">\n  <input type=\"text\" value=\"\" placeholder=\"First Name\"\n  id=\"firstname\" formControlName=\"firstname\">\n  <input type=\"text\" value=\"\" placeholder=\"Last Name\"\n  id=\"lastname\" formControlName=\"lastname\">\n  <input type=\"email\" value=\"\" placeholder=\"Email\"\n  id=\"email\" formControlName=\"email\">\n  <input type=\"password\" value=\"\" placeholder=\"Password\"\n  id=\"password\" formControlName=\"password\">\n  <span class=\"flex\">\n    <button type=\"submit\"\n    class=\"btn btn-success\">Submit\n    </button>\n    <a routerLink=\"/login\" type=\"button\"\n    class=\"btn btn-primary\">Login\n    </a>\n  </span>\n</form>\n<!-- \n<div class=\"flex\">\n  <a routerLink=\"/signup/teacher\" class=\"btn btn-warning flex coach-butt\">Become a Coach</a>\n</div> -->\n"
+module.exports = "<h3>Signup Up for the Beta</h3>\n<form id=\"signup\" [formGroup]=\"apprenticeSignupForm\" (ngSubmit)=\"onApprenticeSignup()\">\n  <input type=\"text\" value=\"\" placeholder=\"Full Name\"\n  id=\"fullname\" formControlName=\"fullname\">\n  <input type=\"email\" value=\"\" placeholder=\"Email\"\n  id=\"email\" formControlName=\"email\">\n  <input type=\"password\" value=\"\" placeholder=\"Password\"\n  id=\"password\" formControlName=\"password\">\n  <span class=\"flex\">\n    <button type=\"submit\"\n    class=\"btn btn-success\">Submit\n    </button>\n    <a routerLink=\"/login\" type=\"button\"\n    class=\"btn btn-primary\">Login\n    </a>\n  </span>\n</form>\n<!--\n<div class=\"flex\">\n  <a routerLink=\"/signup/teacher\" class=\"btn btn-warning flex coach-butt\">Become a Coach</a>\n</div> -->\n"
 
 /***/ }),
 
@@ -434,16 +447,14 @@ var SignupFormComponent = (function () {
         this.authService = authService;
     }
     SignupFormComponent.prototype.onApprenticeSignup = function () {
-        var apprentice = new __WEBPACK_IMPORTED_MODULE_3__models_apprentice_model__["a" /* Apprentice */](this.apprenticeSignupForm.value.username, this.apprenticeSignupForm.value.firstname, this.apprenticeSignupForm.value.lastname, this.apprenticeSignupForm.value.email, this.apprenticeSignupForm.value.password);
+        var apprentice = new __WEBPACK_IMPORTED_MODULE_3__models_apprentice_model__["a" /* Apprentice */](this.apprenticeSignupForm.value.fullname, this.apprenticeSignupForm.value.email, this.apprenticeSignupForm.value.password);
         this.authService.apprenticeSignup(apprentice)
             .subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
         this.apprenticeSignupForm.reset();
     };
     SignupFormComponent.prototype.ngOnInit = function () {
         this.apprenticeSignupForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            username: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            firstname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            lastname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            fullname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
             email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
@@ -464,6 +475,52 @@ SignupFormComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=signup-form.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../app/app/apprentice.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApprenticeService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var server = 'http://localhost:3000/';
+var apprenticeId = localStorage.getItem("apprenticeId");
+var ApprenticeService = (function () {
+    function ApprenticeService(http) {
+        this.http = http;
+    }
+    ApprenticeService.prototype.getApprentice = function () {
+        return this.http.get(server + 'apprentice/profile-retrieve/' + apprenticeId)
+            .map(function (res) {
+            var apprentice = res.json().obj;
+            return apprentice;
+        });
+    };
+    return ApprenticeService;
+}());
+ApprenticeService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], ApprenticeService);
+
+var _a;
+//# sourceMappingURL=apprentice.service.js.map
 
 /***/ }),
 
@@ -548,6 +605,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+// Production Server
+// const server = 'https://learnt.herokuapp.com/'
+// Development Server
+var server = 'http://localhost:3000/';
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
@@ -555,14 +616,14 @@ var AuthService = (function () {
     AuthService.prototype.apprenticeSignup = function (apprentice) {
         var body = JSON.stringify(apprentice);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
-        return this.http.post('https://learnt.herokuapp.com/apprentice/signup', body, { headers: headers })
+        return this.http.post(server + 'apprentice/signup', body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.json()); });
     };
     AuthService.prototype.masterSignup = function (master) {
         var body = JSON.stringify(master);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
-        return this.http.post('https://learnt.herokuapp.com/master/signup', body, { headers: headers })
+        return this.http.post(server + 'master/signup', body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) {
             return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.json());
@@ -571,14 +632,14 @@ var AuthService = (function () {
     AuthService.prototype.apprenticeLogin = function (apprentice) {
         var body = JSON.stringify(apprentice);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
-        return this.http.post('https://learnt.herokuapp.com/apprentice/login', body, { headers: headers })
+        return this.http.post(server + 'apprentice/login', body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.json()); });
     };
     AuthService.prototype.masterLogin = function (master) {
         var body = JSON.stringify(master);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
-        return this.http.post('https://learnt.herokuapp.com/master/login', body, { headers: headers })
+        return this.http.post(server + 'master/login', body, { headers: headers })
             .map(function (response) {
             return response.json();
         })
@@ -749,44 +810,16 @@ module.exports = "<div class=\"flex wrapper\">\n  <div class=\"flex half text\">
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LandingHeroComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_auth_service__ = __webpack_require__("../../../../../app/app/auth/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_apprentice_model__ = __webpack_require__("../../../../../app/app/models/apprentice.model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
 
 var LandingHeroComponent = (function () {
-    function LandingHeroComponent(authService) {
-        this.authService = authService;
+    function LandingHeroComponent() {
     }
-    LandingHeroComponent.prototype.onSubmit = function () {
-        var apprentice = new __WEBPACK_IMPORTED_MODULE_3__models_apprentice_model__["a" /* Apprentice */](this.myForm.value.username, this.myForm.value.firstname, this.myForm.value.lastname, this.myForm.value.email, this.myForm.value.password);
-        this.authService.apprenticeSignup(apprentice)
-            .subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
-        this.myForm.reset();
-    };
-    LandingHeroComponent.prototype.ngOnInit = function () {
-        this.myForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            username: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            firstname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            lastname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required,
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-            ]),
-            password: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */](null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required)
-        });
-    };
     return LandingHeroComponent;
 }());
 LandingHeroComponent = __decorate([
@@ -794,11 +827,9 @@ LandingHeroComponent = __decorate([
         selector: 'app-landing-hero',
         template: __webpack_require__("../../../../../app/app/landing-hero/landing-hero.component.html"),
         styles: [__webpack_require__("../../../../../app/app/landing-hero/landing-hero.component.css")]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__auth_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__auth_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+    })
 ], LandingHeroComponent);
 
-var _a;
 //# sourceMappingURL=landing-hero.component.js.map
 
 /***/ }),
@@ -1187,6 +1218,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+// Production Server
+// const server = 'https://learnt.herokuapp.com/'
+// Development Server
+var server = 'http://localhost:3000/';
 var MasterService = (function () {
     function MasterService(http) {
         this.http = http;
@@ -1194,7 +1229,7 @@ var MasterService = (function () {
     }
     MasterService.prototype.getMasters = function () {
         var _this = this;
-        return this.http.get('https://learnt.herokuapp.com/master/retrieve-all')
+        return this.http.get(server + 'master/retrieve-all')
             .map(function (response) {
             var masters = response.json().obj;
             var transformedMasters = [];
@@ -1225,12 +1260,10 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Apprentice; });
 var Apprentice = (function () {
-    function Apprentice(username, password, firstname, lastname, email) {
-        this.username = username;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    function Apprentice(email, password, fullname) {
         this.email = email;
+        this.password = password;
+        this.fullname = fullname;
     }
     return Apprentice;
 }());

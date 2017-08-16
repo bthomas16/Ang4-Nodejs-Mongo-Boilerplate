@@ -16,7 +16,7 @@ export class ApprenticeLoginComponent implements OnInit {
   constructor(private authService: AuthService, private router:Router) { }
 
   onApprenticeLogin() {
-    const apprentice = new Apprentice(this.apprenticeLoginForm.value.username, this.apprenticeLoginForm.value.password);
+    const apprentice = new Apprentice(this.apprenticeLoginForm.value.email, this.apprenticeLoginForm.value.password);
      this.authService.apprenticeLogin(apprentice)
     .subscribe(
       data => {
@@ -32,7 +32,7 @@ export class ApprenticeLoginComponent implements OnInit {
 
   ngOnInit() {
     this.apprenticeLoginForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
+      email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)
     });
   }

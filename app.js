@@ -9,17 +9,11 @@ var master = require('./routes/master');
 // var user = 'zachFrantz';
 // var password = 'skillsite';
 
+// Production environment
+// mongoose.connect("mongodb://zachFrantz:skillsite@ds015750.mlab.com:15750/learnt", { useMongoClient: true });
 
-mongoose.connect("mongodb://zachFrantz:skillsite@ds015750.mlab.com:15750/learnt", { useMongoClient: true });
-// mongoose.connect('mongodb://localhost:27017/skills-app-db', { useMongoClient: true });
-
-// const db = 'localhost:27017/skills-app-db';
-// mongoose.Promise = global.Promise;
-// mongoose.connect(db, (err)=> {
-//   if(err) {
-//     console.log("Error you stupie!" + err);
-//   }
-// })
+// Development Environment
+mongoose.connect('mongodb://localhost:27017/skills-app-db', { useMongoClient: true });
 
 
 var app = express();
