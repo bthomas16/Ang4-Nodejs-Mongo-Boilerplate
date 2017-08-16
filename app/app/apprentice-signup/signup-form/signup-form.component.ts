@@ -18,9 +18,7 @@ export class SignupFormComponent implements OnInit {
 
   onApprenticeSignup() {
     const apprentice = new Apprentice (
-      this.apprenticeSignupForm.value.username,
-      this.apprenticeSignupForm.value.firstname,
-      this.apprenticeSignupForm.value.lastname,
+      this.apprenticeSignupForm.value.fullname,
       this.apprenticeSignupForm.value.email,
       this.apprenticeSignupForm.value.password
     );
@@ -34,9 +32,7 @@ export class SignupFormComponent implements OnInit {
 
   ngOnInit() {
     this.apprenticeSignupForm = new FormGroup({
-            username: new FormControl(null, Validators.required),
-            firstname: new FormControl(null, Validators.required),
-            lastname: new FormControl(null, Validators.required),
+            fullname: new FormControl(null, Validators.required),
             email: new FormControl(null, [
                 Validators.required,
                 Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")

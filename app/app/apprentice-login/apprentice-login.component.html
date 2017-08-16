@@ -1,6 +1,6 @@
 <div class="flex">
   <form [formGroup]="apprenticeLoginForm" (ngSubmit)="onApprenticeLogin()">
-    <input type="text" placeholder="Username" id="username" class="form-control" formControlName="username">
+    <input type="email" placeholder="Email Address" id="email" class="form-control" formControlName="email">
     <input type="password" placeholder="Password" id="password" class="form-control" formControlName="password">
     <button class="btn btn-success">Login</button>
   </form>

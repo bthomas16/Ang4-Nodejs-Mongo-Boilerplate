@@ -8,12 +8,11 @@ var Apprentice = require('../models/apprentice');
 /* GET home page. */
 router.post('/signup', function(req, res, next) {
   var apprentice = new Apprentice ({
-    username: req.body.username,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    fullname: req.body.fullname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10)
   });
+  console.log(apprentice);
   apprentice.save((err, result) => {
     if (err) {
             return res.status(500).json({
@@ -29,8 +28,10 @@ router.post('/signup', function(req, res, next) {
     });
 
 router.post('/login', (req, res, next) => {
-  Apprentice.findOne({username: req.body.username},
+  console.log('made it');
+  Apprentice.findOne({email: req.body.email},
   function(err, apprentice) {
+    console.log(apprentice);
     if(err) {
       res.status(500).json({
         title: 'An Error Occured',
@@ -57,6 +58,24 @@ router.post('/login', (req, res, next) => {
       });
     });
   });
+
+  router.get('/profile-retrieve/:id', (req,res)=> {
+    Apprentice.findOne({_id: req.params.id})
+    .exec(function(err, apprentice) {
+      if(err){
+        return res.status(500).json({
+          title: 'An error occured',
+          error: err
+        });
+      }
+      res.status(200).json({
+        message: 'Success',
+        obj: apprentice
+      });
+    });
+  });
+
+
 
 
 module.exports = router;
